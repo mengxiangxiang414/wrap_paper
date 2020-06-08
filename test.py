@@ -57,10 +57,14 @@ if len(approx)==4:
     #锐化
     kernel = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]], np.float32)
     dst2 = cv2.filter2D(dst, -1, kernel=kernel)
+    shape2 = np.shape(dst2)
+    dst3 = dst2[1:shape2[0]-1,1:shape2[1]-1,:]
 
     #输出与展示
     cv2.imwrite("d:/wrap/21.jpg",dst)
     cv2.imwrite("d:/wrap/22.jpg",dst2)
+    cv2.imwrite("d:/wrap/23.jpg", dst3)
     cv2.imshow('image',dst)
     cv2.imshow('image2',dst2)
+    cv2.imshow('image3', dst3)
     cv2.waitKey(0)
